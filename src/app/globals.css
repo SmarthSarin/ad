@@ -2,28 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Light Mode Defaults */
+/* Root Variables for Light Mode */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-geist-sans: 'Geist', sans-serif;
-  --font-geist-mono: 'Geist Mono', monospace;
+  --font-primary: 'Geist', sans-serif;
+  --font-mono: 'Geist Mono', monospace;
 }
 
-/* Dark Mode Variables (Next.js Class-Based) */
+/* Dark Mode Variables */
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
 }
 
-/* Apply Global Styles */
+/* Global Styles */
 body {
+  @apply transition-colors duration-300 ease-in-out;
   color: var(--foreground);
-  background: var(--background) url('/site-bg.jpg') no-repeat center/cover;
-  font-family: var(--font-geist-sans);
+  background: var(--background);
+  font-family: var(--font-primary);
 }
 
-/* Apply Mono Font to Code Blocks */
+/* Background Image Styling */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/site-bg.jpg') no-repeat center/cover;
+  opacity: 0.1; /* Adjust opacity as needed */
+  z-index: -1;
+}
+
+/* Code and Pre Elements */
 code, pre {
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-mono);
+}
+
+/* Button Styling */
+button {
+  @apply px-4 py-2 rounded-lg font-medium transition-all;
+}
+
+/* Login Input Styling */
+input {
+  @apply w-full p-2 border rounded-md bg-gray-100 dark:bg-gray-800 dark:text-white;
+}
+
+/* Hide Scrollbar */
+::-webkit-scrollbar {
+  display: none;
 }
