@@ -1,7 +1,10 @@
 import { MongoClient } from "mongodb";
 
-const uri = process.env.MONGODB_URI; // Ensure this exists in your .env file
-const options = {};
+const uri = process.env.MONGODB_URI || 'mongodb+srv://[your-connection-string]'; // Add your MongoDB URI in Secrets
+const options = {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+};
 
 let client;
 let clientPromise;
