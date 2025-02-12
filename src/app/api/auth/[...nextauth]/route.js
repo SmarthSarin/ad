@@ -55,7 +55,9 @@ export const authOptions = {
       return session;
     },
     async redirect({ url, baseUrl }) {
-      return baseUrl; // Ensures proper redirect
+      if (url.startsWith('/')) return `${baseUrl}${url}`
+      else if (new URL(url).origin === baseUrl) return url
+      return baseUrl + '/homePage'
     },
   },
 };
