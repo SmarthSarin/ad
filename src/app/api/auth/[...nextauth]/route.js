@@ -9,13 +9,14 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackUrl: 'https://todo-list.smarthsarin.repl.co/api/auth/callback/google'
     }),
   ],
   adapter: MongoDBAdapter(clientPromise),
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/auth',
-    error: '/auth'
+    error: '/auth/error'
   },
   callbacks: {
     async session({ session, user }) {
