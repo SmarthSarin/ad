@@ -18,8 +18,12 @@ export const authOptions = {
     error: '/auth'
   },
   callbacks: {
+    async session({ session, user }) {
+      session.user.id = user.id;
+      return session;
+    },
     async redirect({ url, baseUrl }) {
-      return url.startsWith(baseUrl) ? url : baseUrl + '/homePage'
+      return url.startsWith(baseUrl) ? url : baseUrl + '/dashboard'
     },
   }
 };
