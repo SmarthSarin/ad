@@ -1,15 +1,16 @@
 
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import clientPromise from "@/lib/mongodb";
+import mongoose from "mongoose";
+import { connectToDatabase } from "@/utils/database";
+import User from "../../../../../models/user";
 
 export async function POST(req) {
   try {
+    await connectToDatabase();
     const { name, email, password } = await req.json();
-    const client = await clientPromise;
-    const usersCollection = client.db().collection("users");
 
-    const existingUser = await usersCollection.findOne({ email });
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
       return NextResponse.json(
         { message: "Email already exists" },
@@ -18,7 +19,7 @@ export async function POST(req) {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    await usersCollection.insertOne({
+    await User.create({
       name,
       email,
       password: hashedPassword,
@@ -29,6 +30,7 @@ export async function POST(req) {
       { status: 201 }
     );
   } catch (error) {
+    console.error("Registration error:", error);
     return NextResponse.json(
       { message: "Error registering user" },
       { status: 500 }
