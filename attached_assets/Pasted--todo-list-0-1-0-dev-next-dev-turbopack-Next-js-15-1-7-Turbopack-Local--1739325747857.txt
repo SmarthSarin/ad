@@ -1,0 +1,102 @@
+
+> todo-list@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.1.7 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://172.31.128.39:3000
+
+ ✓ Starting...
+ ✓ Ready in 1076ms
+ ○ Compiling / ...
+ ✓ Compiled / in 12.5s
+ ⨯ TypeError: Invalid URL
+    at [project]/src/app/providers/AuthProvider.js [app-ssr] (ecmascript) (src/app/providers/AuthProvider.js:3:0)
+    at [project]/src/app/layout.js [app-ssr] (ecmascript) (src/app/layout.js:7:0)
+  1 | "use client";
+  2 |
+> 3 | import { SessionProvider } from "next-auth/react";
+  4 |
+  5 | export default function AuthProvider({ children, session }) {
+  6 |   return <SessionProvider session={session}>{children}</SessionProvider>; {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad',
+  digest: '3649566231'
+}
+ GET / 500 in 13757ms
+ ○ Compiling /api/auth/[...nextauth] ...
+ ⨯ TypeError: Invalid URL
+    at [project]/src/app/providers/AuthProvider.js [app-ssr] (ecmascript) (src/app/providers/AuthProvider.js:3:0)
+    at [project]/src/app/layout.js [app-ssr] (ecmascript) (src/app/layout.js:7:0)
+  1 | "use client";
+  2 |
+> 3 | import { SessionProvider } from "next-auth/react";
+  4 |
+  5 | export default function AuthProvider({ children, session }) {
+  6 |   return <SessionProvider session={session}>{children}</SessionProvider>; {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad',
+  digest: '3649566231'
+}
+ GET /l.png 500 in 1245ms
+ ⨯ TypeError: Invalid URL
+    at [project]/src/app/providers/AuthProvider.js [app-ssr] (ecmascript) (src/app/providers/AuthProvider.js:3:0)
+    at [project]/src/app/layout.js [app-ssr] (ecmascript) (src/app/layout.js:7:0)
+  1 | "use client";
+  2 |
+> 3 | import { SessionProvider } from "next-auth/react";
+  4 |
+  5 | export default function AuthProvider({ children, session }) {
+  6 |   return <SessionProvider session={session}>{children}</SessionProvider>; {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad',
+  digest: '3649566231'
+}
+ GET /d.png 500 in 701ms
+ ✓ Compiled /api/auth/[...nextauth] in 3.3s
+ ⨯ [TypeError: Invalid URL] {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad'
+}
+ ⨯ [TypeError: Invalid URL] {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad'
+}
+ GET /api/auth/session 500 in 5037ms
+ ⨯ [TypeError: Invalid URL] {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad'
+}
+ ⨯ [TypeError: Invalid URL] {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad'
+}
+ GET /api/auth/providers 500 in 1303ms
+ ⨯ [TypeError: Invalid URL] {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad'
+}
+ ⨯ [TypeError: Invalid URL] {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad'
+}
+ POST /api/auth/_log 500 in 593ms
+ ⨯ [TypeError: Invalid URL] {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad'
+}
+ ⨯ [TypeError: Invalid URL] {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad'
+}
+ GET /api/auth/error 500 in 1073ms
+ ⨯ [TypeError: Invalid URL] {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad'
+}
+ ⨯ [TypeError: Invalid URL] {
+  code: 'ERR_INVALID_URL',
+  input: 'https:// https://replit.com/@smarthsarin/ad'
+}
+ POST /api/auth/_log 500 in 457ms
+^A
