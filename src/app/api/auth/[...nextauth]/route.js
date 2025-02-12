@@ -54,6 +54,9 @@ export const authOptions = {
       }
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      return baseUrl; // Ensures proper redirect
+    },
   },
 };
 
