@@ -1,26 +1,22 @@
-import { MongoClient } from "mongodb";
 
-const uri = process.env.MONGODB_URI || 'mongodb+srv://[your-connection-string]'; // Add your MongoDB URI in Secrets
-const options = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-};
+import { MongoClient } from 'mongodb';
 
+if (!process.env.MONGODB_URI) {
+  throw new Error('Please add MONGODB_URI to your environment variables');
+}
+
+const uri = process.env.MONGODB_URI;
 let client;
 let clientPromise;
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("Please add MONGODB_URI to your environment variables");
-}
-
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === 'development') {
   if (!global._mongoClientPromise) {
-    client = new MongoClient(uri, options);
+    client = new MongoClient(uri);
     global._mongoClientPromise = client.connect();
   }
   clientPromise = global._mongoClientPromise;
 } else {
-  client = new MongoClient(uri, options);
+  client = new MongoClient(uri);
   clientPromise = client.connect();
 }
 
