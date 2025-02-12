@@ -17,10 +17,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     setMounted(true);
-    if (!session) {
-      router.replace("/");
-    }
-  }, [session, router]);
+  }, []);
 
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -114,14 +111,14 @@ export default function Dashboard() {
         </ul>
       </div>
 
-      {/* Logout Button */}
+      {/* Back/Logout Button */}
       <button
-        onClick={() => signOut()}
+        onClick={() => session ? signOut() : router.push('/')}
         className="fixed bottom-4 right-4 px-6 py-3 text-white font-semibold rounded-lg shadow-lg 
              transition-all hover:scale-105 active:scale-95 
              bg-red-500 hover:bg-red-600 dark:bg-gray-800 dark:hover:bg-gray-700"
       >
-        Logout
+        {session ? 'Logout' : 'Back to Login'}
       </button>
 
 
