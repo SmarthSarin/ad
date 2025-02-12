@@ -1,3 +1,4 @@
+
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
@@ -15,6 +16,11 @@ export const authOptions = {
   pages: {
     signIn: '/auth',
     error: '/auth'
+  },
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+      return url.startsWith(baseUrl) ? url : baseUrl + '/homePage'
+    },
   }
 };
 
