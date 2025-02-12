@@ -124,6 +124,18 @@ export default function Home() {
               {showSignup ? "Login" : "Sign Up"}
             </span>
           </p>
+          
+          <div className="text-center mt-4">
+            <span className="text-gray-500">or</span>
+            <button
+              onClick={() => router.push('/homePage')}
+              className="block w-full mt-2 py-2 px-4 rounded-lg font-semibold transition-all 
+                bg-gray-200 text-gray-700 hover:bg-gray-300 
+                dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+            >
+              Continue as Guest
+            </button>
+          </div>
         </motion.div>
       )}
 
