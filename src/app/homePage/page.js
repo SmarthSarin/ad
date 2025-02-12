@@ -159,12 +159,12 @@ export default function Dashboard() {
 
       <button
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="fixed top-4 right-4 w-12 h-12 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all"
+        className="fixed top-4 right-4 w-14 h-14 flex items-center justify-center bg-white/90 dark:bg-gray-800/90 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all backdrop-blur-sm"
       >
         <img
           src={theme === "light" ? "/L.png" : "/D.png"}
           alt="Theme Toggle"
-          className="w-6 h-6"
+          className="w-8 h-8 object-contain"
         />
       </button>
     </div>
