@@ -10,14 +10,22 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  adapter: MongoDBAdapter(clientPromise), // Connect to MongoDB
-  secret: process.env.NEXTAUTH_SECRET, // Required for production
+  adapter: MongoDBAdapter(clientPromise),
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async session({ session, token }) {
-      if (token?.sub) session.user.id = token.sub;
+    async session({ session, token, user }) {
+      if (user?.id) session.user.id = user.id;
       return session;
     },
+    async jwt({ token, user }) {
+      if (user?.id) token.id = user.id;
+      return token;
+    }
   },
+  pages: {
+    signIn: '/auth',
+    error: '/auth'
+  }
 };
 
 export const handler = NextAuth(authOptions);
