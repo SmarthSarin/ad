@@ -1,0 +1,71 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
+import { motion, AnimatePresence } from "framer-motion";
+
+export default function Dashboard() {
+  const { data: session } = useSession();
+  const router = useRouter();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState("");
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editingText, setEditingText] = useState("");
+
+  useEffect(() => {
+    setMounted(true);
+    const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    setTasks(storedTasks);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  const addTask = (e) => {
+    e.preventDefault();
+    if (newTask.trim()) {
+      setTasks([...tasks, { text: newTask, completed: false, timestamp: Date.now() }]);
+      setNewTask("");
+    }
+  };
+
+  const toggleTask = (index) => {
+    setTasks(
+      tasks.map((task, i) =>
+        i === index ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
+
+  const deleteTask = (index) => {
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
+  };
+
+  if (!mounted) return <div className="min-h-screen bg-white dark:bg-black"></div>;
+
+  return (
+    <div className="min-h-screen relative flex flex-col items-center justify-center">
+      {/* Background */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: "url('/site-bg.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          filter: theme === "light" ? "invert(1)" : "none",
+        }}
+      />
+      {/* Rest of your component goes here */}
+      <h1 className="text-4xl font-bold text-center">Task Manager</h1>
+      {/* Other components such as task list, buttons etc. */}
+    </div>
+  );
+}

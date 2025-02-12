@@ -16,7 +16,7 @@ export default function Dashboard() {
   const [newTask, setNewTask] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingText, setEditingText] = useState("");
-
+  
   useEffect(() => {
     setMounted(true);
     const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -64,34 +64,15 @@ export default function Dashboard() {
   if (!mounted) return null;
 
   return (
-    
-    <div
-      className="relative min-h-screen p-4 md:p-8"
-      style={{
-        backgroundImage: "url('/site-bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        filter: theme === "light" ? "invert(1)" : "none",
-      }}
-    >
-
-
+    <div className="min-h-screen p-4 md:p-8 bg-gradient-to-br from-white to-gray-100 dark:from-gray-900 dark:to-black transition-all duration-300">
       <div className="max-w-4xl mx-auto">
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl font-bold text-center mb-8"
+          className="text-4xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600"
         >
-          <span
-            className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 
-                       bg-clip-text text-transparent dark:from-blue-500 
-                       dark:via-purple-500 dark:to-pink-500"
-          >
-            W3LCOME To Task Manager Web Application
-          </span>
+          Task Manager
         </motion.h1>
-
 
         <motion.form 
           initial={{ opacity: 0 }}
